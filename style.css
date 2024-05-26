@@ -5,3 +5,37 @@
     margin: 0;
     padding: 0;
 }
+
+.root-container {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    width: 450px;
+    height: 600px;
+}
+
+.calc-window {
+    width: 450px;
+    height: 150px;
+}
+
+.buttons {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    flex: 1;
+}
+
+.first-row,
+.second-row,
+.third-row,
+.fourth-row {
+    display: flex;
+    flex: 1;
+}
+
+button {
+    flex: 1;
+    min-height: 100px;
+    min-width: 100px;
+}
