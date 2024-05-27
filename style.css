@@ -38,7 +38,8 @@ button {
     flex: 1;
 }
 
-.zero {
+.zero,
+.clearing {
     display: flex;
     flex-direction: column;
     flex: 1;

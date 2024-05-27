@@ -110,6 +110,12 @@ function clearDisplay(full = false){
     }
 }
 
+function backspace(){
+    let text = Array.from(calcWindow.textContent);
+        text.pop()
+    calcWindow.textContent = text.join('');
+}
+
 const history = document.querySelector(".history");
 const calcWindow = document.querySelector(".calc-window");
 
@@ -139,20 +145,6 @@ clearButton.addEventListener("click", clearDisplay);
 const dotButton = document.querySelector(".btn-dot");
 let dotPressed = false;
 
-// if (this.textContent == "."){
-//     if (firstNumber != null){
-//         dotPressed = false;
-//         if (dotPressed == true){
-//             return;
-//         }
-//         dotPressed = true;
-//         calcWindow.textContent += this.textContent;
-//         return;
-//     } else if (dotPressed == false) {
-//         dotPressed = true;
-//         calcWindow.textContent += this.textContent;
-//         return;
-//     } else {
-//         return;
-//     }
-// }
+const backspaceBtn = document.querySelector(".btn-backspace");
+backspaceBtn.removeEventListener("click", numericButtons);
+backspaceBtn.addEventListener("click", backspace);
