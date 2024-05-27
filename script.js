@@ -15,16 +15,19 @@ function divide(num1, num2){
     return num1 / num2;
 }
 
-let firstNumber;
-let secondNumber;
-let operation;
+let firstNumber = null;
+let secondNumber = null;
+let operation = null;
+let result = null;
 
-function operate(firstNumber, operation, secondNumber){
-    if (firstNumber === undefined || operation === undefined){
+function operate(){
+    if (firstNumber === null || operation === null) {
+        clearDisplay(true);
         return alert("Invalid input");
     }
 
-    let result;
+    secondNumber = parseInt(calcWindow.textContent);
+    clearDisplay();
 
     switch (operation){
         case '+':
@@ -47,5 +50,83 @@ function operate(firstNumber, operation, secondNumber){
             alert("Something went wrong.");
     }
 
+    calcWindow.textContent = result;
+
+    let p = document.createElement("p");
+    history.appendChild(p);
+    p.textContent = `${firstNumber} ${operation} ${secondNumber} = ${result}`;
+
+    firstNumber = parseInt(calcWindow.textContent);
+    secondNumber = null;
+    operation = null;
+    
     return result;
 }
+
+function selectOperation(){
+    if (calcWindow.textContent == "") {
+        clearDisplay(true);
+        return alert("Invalid input");
+    }
+
+    if (operation != null){
+        operate();
+        operation = this.textContent;
+        firstNumber = parseInt(calcWindow.textContent);
+
+        return operation;
+    }
+
+    firstNumber = parseInt(calcWindow.textContent);
+    operation = this.textContent;
+
+    clearDisplay();
+
+    return operation;
+}
+
+function numericButtons(){
+    if (result != null){
+        clearDisplay();
+        result = null;
+    }
+    calcWindow.textContent += this.textContent;
+}
+
+function clearDisplay(full = false){
+    if (full){
+        calcWindow.textContent = "";
+        firstNumber = null;
+        secondNumber = null;
+        operation = null;
+        result = null;
+    } else {
+        calcWindow.textContent = "";
+    }
+}
+
+const history = document.querySelector(".history");
+const calcWindow = document.querySelector(".calc-window");
+
+let buttons = document.querySelectorAll("button");
+    buttons = Array.from(buttons);
+
+buttons.forEach((button) => {
+    button.addEventListener("click", numericButtons);
+})
+
+const evaluateButton = document.querySelector(".btn-evaluate");
+const clearButton = document.querySelector(".btn-clear");
+let operatorButtons = document.querySelectorAll(".btn-operator");
+    operatorButtons = Array.from(operatorButtons);
+
+operatorButtons.forEach((button) => {
+    button.removeEventListener("click", numericButtons);
+    button.addEventListener("click", selectOperation);
+})
+
+evaluateButton.removeEventListener("click", numericButtons);
+clearButton.removeEventListener("click", numericButtons);
+
+evaluateButton.addEventListener("click", operate);
+clearButton.addEventListener("click", clearDisplay);
