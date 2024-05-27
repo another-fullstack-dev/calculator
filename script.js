@@ -99,13 +99,16 @@ function numericButtons(){
 }
 
 function clearDisplay(full = false){
-    if (full){
+    if (full && full != event){
         calcWindow.textContent = "";
         firstNumber = null;
         secondNumber = null;
         operation = null;
         result = null;
+        dotPressed = false;
     } else {
+        dotButton.addEventListener("click", numericButtons);
+        dotPressed = false;
         calcWindow.textContent = "";
     }
 }
