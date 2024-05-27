@@ -26,7 +26,7 @@ function operate(){
         return alert("Invalid input");
     }
 
-    secondNumber = parseInt(calcWindow.textContent);
+    secondNumber = parseFloat(calcWindow.textContent);
     clearDisplay();
 
     switch (operation){
@@ -50,13 +50,14 @@ function operate(){
             alert("Something went wrong.");
     }
 
+    result = Math.round(result * 100) / 100;
     calcWindow.textContent = result;
 
     let p = document.createElement("p");
     history.appendChild(p);
     p.textContent = `${firstNumber} ${operation} ${secondNumber} = ${result}`;
 
-    firstNumber = parseInt(calcWindow.textContent);
+    firstNumber = parseFloat(calcWindow.textContent);
     secondNumber = null;
     operation = null;
     
@@ -72,12 +73,12 @@ function selectOperation(){
     if (operation != null){
         operate();
         operation = this.textContent;
-        firstNumber = parseInt(calcWindow.textContent);
+        firstNumber = parseFloat(calcWindow.textContent);
 
         return operation;
     }
 
-    firstNumber = parseInt(calcWindow.textContent);
+    firstNumber = parseFloat(calcWindow.textContent);
     operation = this.textContent;
 
     clearDisplay();
