@@ -80,6 +80,7 @@ function selectOperation(){
 
     firstNumber = parseFloat(calcWindow.textContent);
     operation = this.textContent;
+    dotButton.addEventListener("click", numericButtons);
 
     clearDisplay();
 
@@ -90,6 +91,9 @@ function numericButtons(){
     if (result != null){
         clearDisplay();
         result = null;
+    }
+    if (this.textContent == "."){
+        dotButton.removeEventListener("click", numericButtons)
     }
     calcWindow.textContent += this.textContent;
 }
@@ -131,3 +135,24 @@ clearButton.removeEventListener("click", numericButtons);
 
 evaluateButton.addEventListener("click", operate);
 clearButton.addEventListener("click", clearDisplay);
+
+const dotButton = document.querySelector(".btn-dot");
+let dotPressed = false;
+
+// if (this.textContent == "."){
+//     if (firstNumber != null){
+//         dotPressed = false;
+//         if (dotPressed == true){
+//             return;
+//         }
+//         dotPressed = true;
+//         calcWindow.textContent += this.textContent;
+//         return;
+//     } else if (dotPressed == false) {
+//         dotPressed = true;
+//         calcWindow.textContent += this.textContent;
+//         return;
+//     } else {
+//         return;
+//     }
+// }

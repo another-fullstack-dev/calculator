@@ -36,6 +36,12 @@
 
 button {
     flex: 1;
-    min-height: 100px;
-    min-width: 100px;
+}
+
+.zero {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-width: 112.5px;
+    min-height: auto;
 }
