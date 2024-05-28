@@ -117,7 +117,11 @@ function clearDisplay(full = false){
 
 function backspace(){
     let text = Array.from(calcWindow.textContent);
-        text.pop()
+    let popped = text.pop();
+    if (popped == "."){
+        dotButton.addEventListener("click", numericButtons);
+        dotPressed = false;
+    }
     calcWindow.textContent = text.join('');
 }
 

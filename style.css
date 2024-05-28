@@ -55,7 +55,7 @@ button {
 }
 
 body {
-    font-family: "Roboto";
+    font-family: "Roboto", sans-serif;
     display: flex;
     justify-content: center;
     background-color: rgb(123, 123, 123);
