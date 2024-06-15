@@ -11,7 +11,6 @@ function multiply(num1, num2){
 }
 
 function divide(num1, num2){
-    if (num1 == 0 || num2 == 0) return alert("Cant divide by zero.")
     return num1 / num2;
 }
 
@@ -43,11 +42,11 @@ function operate(){
             break;
 
         case '/':
+            if (firstNumber == 0 || secondNumber == 0) {
+                clearDisplay(true);
+                return alert("Cant divide by zero.");
+            }
             result = divide(firstNumber, secondNumber);
-            break;
-        
-        default:
-            alert("Something went wrong.");
     }
 
     result = Math.round(result * 100) / 100;
@@ -98,6 +97,7 @@ function numericButtons(){
     calcWindow.textContent += this.textContent;
 }
 
+// this sucks
 function clearDisplay(full = false){
     if (full){
         calcWindow.textContent = "";
