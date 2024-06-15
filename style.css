@@ -50,7 +50,7 @@ button {
     display: flex;
     flex-direction: column;
     flex: 1;
-    min-width: 112.5px;
+    min-width: 112.5px; /* wtf */
     min-height: auto;
 }
 
@@ -71,6 +71,7 @@ body {
     max-height: 616px;
     border: solid rgb(29, 29, 29) 8px;
     background-color: whitesmoke;
+    font-size: 24px;
 }
 
 .btn-operator,
