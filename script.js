@@ -1,31 +1,52 @@
-function add(num1, num2){
-    return num1 + num2;
-}
-
-function subtract(num1, num2){
-    return num1 - num2;
-}
-
-function multiply(num1, num2){
-    return num1 * num2;
-}
-
-function divide(num1, num2){
-    return num1 / num2;
-}
+function add(num1, num2) {return num1 + num2;}
+function subtract(num1, num2) {return num1 - num2;}
+function multiply(num1, num2) {return num1 * num2;}
+function divide(num1, num2) {return num1 / num2;}
 
 let firstNumber = null;
 let secondNumber = null;
 let operation = null;
 let result = null;
 
-function operate(){
-    if (firstNumber === null || operation === null) {
-        clearDisplay(true);
-        return alert("Invalid input");
+const notifications = document.querySelector(".notifications");
+
+function notificationController(...source){
+    console.log(source);
+    let div = document.createElement("div");
+    notifications.appendChild(div);
+    div.style.opacity = 1;
+
+    switch (source[0]) {
+        case "input":
+            div.textContent = "Invalid input";
+            break;
+        
+        case "zero":
+            div.textContent = "Cant divide by zero";
+            break;
+    
+        default:
+            div.textContent = "Something went wrong";
+            break;
     }
 
+    setTimeout(() => {
+        div.style.opacity = 0;
+        notifications.removeChild(div);
+    }, 3000)
+}
+
+// i dont fully understand what is happening bellow here.
+// it been almost a year since i made it.
+// for some reason isNaN is necessary.
+function operate(){
     secondNumber = parseFloat(calcWindow.textContent);
+    if (firstNumber === null || operation === null || isNaN(secondNumber)) {
+        notificationController("input");
+        clearDisplay(true);
+        return console.log("Invalid input");
+    }
+
     clearDisplay();
 
     switch (operation){
@@ -44,7 +65,8 @@ function operate(){
         case '/':
             if (firstNumber == 0 || secondNumber == 0) {
                 clearDisplay(true);
-                return alert("Cant divide by zero.");
+                notificationController("zero");
+                return console.log("Cant divide by zero.");
             }
             result = divide(firstNumber, secondNumber);
     }
@@ -66,7 +88,8 @@ function operate(){
 function selectOperation(){
     if (calcWindow.textContent == "") {
         clearDisplay(true);
-        return alert("Invalid input");
+        notificationController("input");
+        return console.log("Invalid input");
     }
 
     if (operation != null){
