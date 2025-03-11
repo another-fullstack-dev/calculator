@@ -46,7 +46,7 @@ function operate(){
         clearDisplay(true);
         return console.log("Invalid input");
     }
-
+    
     clearDisplay();
 
     switch (operation){
