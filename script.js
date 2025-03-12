@@ -147,7 +147,11 @@ function backspace(){
     calcWindow.textContent = text.join('');
 }
 
-const history = document.querySelector(".history");
+function clearHistory(){
+    history.textContent = "";
+}
+
+const history = document.querySelector(".history-content");
 const calcWindow = document.querySelector(".calc-window");
 
 let buttons = document.querySelectorAll("button");
@@ -179,3 +183,7 @@ let dotPressed = false;
 const backspaceBtn = document.querySelector(".btn-backspace");
 backspaceBtn.removeEventListener("click", numericButtons);
 backspaceBtn.addEventListener("click", backspace);
+
+const clearHistoryBtn = document.querySelector(".clear-history");
+clearHistoryBtn.removeEventListener("click", numericButtons);
+clearHistoryBtn.addEventListener("click", clearHistory);

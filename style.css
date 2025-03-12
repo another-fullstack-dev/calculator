@@ -84,7 +84,7 @@ body {
 }
 
 .history {    
-    
+    width: 300px;
     max-height: 616px;
     border: solid rgb(29, 29, 29) 8px;
     border-radius: 8px;
