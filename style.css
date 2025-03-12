@@ -18,10 +18,12 @@
     width: 450px;
     height: 150px;
     border: 3px solid black;
+    border-radius: 8px;
     overflow-wrap: break-word;
     text-align: right;
     font-size: 32px;
-    background-color: aliceblue;
+    background-color: rgb(89, 85, 134);
+    padding: 4px;
 }
 
 .buttons {
@@ -42,7 +44,19 @@
 button {
     flex: 1;
     font-size: 24px;
-    background-color: lightgrey;
+    background-color: rgb(72, 69, 110);
+    color: white;
+    border-radius: 12px;
+    border: 2px solid rgb(55, 53, 85);
+    font-family: inherit;
+}
+
+button:hover {
+    background-color: rgb(83, 80, 128);
+}
+
+button:active {
+    background-color: rgb(93, 89, 145);
 }
 
 .zero,
@@ -55,33 +69,62 @@ button {
 }
 
 body {
-    font-family: "Roboto", sans-serif;
+    font-family: "Consolas", monospace, sans-serif;
     display: flex;
     justify-content: center;
-    background-color: rgb(123, 123, 123);
+    height: 100vh;
+    color: white;
+    background: linear-gradient(to top, rgb(30, 33, 43), rgb(53, 44, 78));
 }
 
 .top {
-    border: 8px solid rgb(29, 29, 29);
+    border: 8px solid rgb(26, 24, 39);
+    border-radius: 16px;
+    max-height: 616px;
 }
 
-.history {
-    max-width: 300px;
-    min-width: 300px;
+.history {    
+    
     max-height: 616px;
     border: solid rgb(29, 29, 29) 8px;
-    background-color: whitesmoke;
+    border-radius: 8px;
+    background-color: rgb(89, 85, 134);
     font-size: 24px;
+    text-wrap: nowrap;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 4px;
+    resize: horizontal;
 }
 
 .btn-operator,
 .btn-clear,
 .btn-backspace {
-    background-color: gray;
+    background-color: rgb(52, 50, 80);
+}
+
+.btn-operator:hover,
+.btn-clear:hover,
+.btn-backspace:hover {
+    background-color: rgb(62, 59, 95);
+}
+
+.btn-operator:active,
+.btn-clear:active,
+.btn-backspace:active {
+    background-color: rgb(65, 62, 100);
 }
 
 .btn-evaluate {
-    background-color: rgb(94, 128, 249);
+    background-color: rgb(148, 15, 92);
+}
+
+.btn-evaluate:hover {
+    background-color: rgb(167, 18, 105);
+}
+
+.btn-evaluate:active {
+    background-color: rgb(185, 19, 116);
 }
 
 .notifications {

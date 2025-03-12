@@ -11,7 +11,6 @@ let result = null;
 const notifications = document.querySelector(".notifications");
 
 function notificationController(...source){
-    console.log(source);
     let div = document.createElement("div");
     notifications.appendChild(div);
     div.style.opacity = 1;
@@ -46,7 +45,7 @@ function operate(){
         clearDisplay(true);
         return console.log("Invalid input");
     }
-    
+
     clearDisplay();
 
     switch (operation){
